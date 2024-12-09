@@ -4,7 +4,7 @@ import { getProductsById, updateProduct } from "../services/ProductService"
 import { Product } from "../types"
 import ProductForm from "../components/ProductForm"
 
-export async function loader({params} : LoaderFunctionArgs) {
+export async function loader({ params } : LoaderFunctionArgs) {
     if(params.id !== undefined) {
         const product = await getProductsById(+params.id)
         if(!product) {
@@ -13,9 +13,9 @@ export async function loader({params} : LoaderFunctionArgs) {
         return product
     }
 
-
-    return {}
+    return null
 }
+
 
 export async function action({request, params} : ActionFunctionArgs) {
     const data = Object.fromEntries(await request.formData())
